@@ -1,7 +1,14 @@
+export default `
 type User {
   _id: ID!
   username: String!
   password: String!
+}
+
+type UserShot {
+  _id: String
+  username: String!
+  thumbnail: String
 }
 
 type Query {
@@ -12,3 +19,4 @@ type Query {
 type Mutation {
   crearUser(username: String!, password: String!): User!
 }
+`

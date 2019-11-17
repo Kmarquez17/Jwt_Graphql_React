@@ -1,0 +1,31 @@
+export default `
+type Post {
+  _id: ID!
+  by: UserShot
+  desc: String
+  photo: String
+  likeBy: [UserShot]
+  comments: [UserShot]
+  createdAt: String
+}
+
+
+type Query {
+  # allPosts: [Post!]
+  getPost(_id: ID!): Post
+}
+
+# input ByInput {
+#   username: String!
+#   thumbnail: String!
+# }
+
+input PostInput {
+  desc: String
+  photo: String
+}
+
+type Mutation {
+  crearPost(post: PostInput): Post!
+}
+`;

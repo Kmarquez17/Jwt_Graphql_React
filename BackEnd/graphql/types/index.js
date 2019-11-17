@@ -1,8 +1,9 @@
 import { mergeTypes } from "merge-graphql-schemas";
-import { importSchema } from "graphql-import";
 
-const Users = importSchema("graphql/types/Users.graphql");
+//Importamos todos los esquemas 
+import Users from "./Users.graphql";
+import Posts from "./Posts.graphql";
 
-const typeDefs = [Users];
+const typeDefs = [Users, Posts];
 
-export default mergeTypes(typeDefs, { all: true });
+export default mergeTypes(typeDefs);

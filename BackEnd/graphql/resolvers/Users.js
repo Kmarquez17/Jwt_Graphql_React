@@ -1,11 +1,3 @@
-export default {
-  Query: {
-    holamundo: (parent, args, context) => "Kevin El Crack ;)"
-  }
-};
-
-// import Users from "../../models/clientes";
-
 export const UsersResolvers = {
   Query: {
     allUsers: (parent, args, {models}) => {
