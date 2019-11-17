@@ -9,7 +9,11 @@ const app = express();
 const server = new ApolloServer({
   schema,
   context: {
-    models
+    models,
+    user: {
+      _id: 1,
+      username: 'Kevin'
+    }
   }
 });
 
