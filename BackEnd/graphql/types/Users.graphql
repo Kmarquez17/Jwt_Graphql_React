@@ -3,13 +3,11 @@ type User {
   _id: ID!
   username: String!
   password: String!
-}
-
-type UserShot {
-  _id: String
-  username: String!
+  fullname: String!
+  email: String!
   thumbnail: String
 }
+
 
 type Query {
   allUsers: [User!]
@@ -17,6 +15,6 @@ type Query {
 }
 
 type Mutation {
-  crearUser(username: String!, password: String!): User!
+  crearUser(username: String!, password: String!, fullname: String!, email:String!): Boolean!
 }
 `

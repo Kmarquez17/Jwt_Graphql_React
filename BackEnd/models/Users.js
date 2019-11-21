@@ -7,6 +7,7 @@ const userSchema = new Schema({
     required: [true, "El campo es requerido"]
   },
   password: { type: String },
+  fullname: { type: String },
   desc: { type: String },
   bio: { type: String },
   thumbnail: { type: String },

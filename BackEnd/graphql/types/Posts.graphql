@@ -1,11 +1,11 @@
 export default `
 type Post {
   _id: ID!
-  by: UserShot
+  by: User
   desc: String
   photo: String
-  likeBy: [UserShot]
-  comments: [UserShot]
+  likeBy: [User]
+  comments: [User]
   createdAt: String
 }
 
