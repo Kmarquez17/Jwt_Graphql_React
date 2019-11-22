@@ -23,7 +23,13 @@ export default {
           password: $password
           fullname: $fullname
           email: $email
-        )
+        ) {
+          success
+          errors {
+            path
+            message
+          }
+        }
       }
     `
   }

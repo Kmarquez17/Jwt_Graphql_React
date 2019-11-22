@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
-import { Mutation } from "react-apollo";
 import logo from "../Insta.png";
-
-import queries from "../utils/queries";
 
 import Signin from "./Login/Signin";
 import Signup from "./Login/Signup";
 // import LostPassword from "./Login/LostPassword";
-
 
 const styles = {
   grid: {
@@ -72,19 +68,7 @@ class Login extends Component {
               />
             )}
             {showRegister && (
-              <Mutation mutation={queries.mutation.createUser}>
-                {(crearUser, { loading, error, data }) => {
-                  if (loading) return "Cargandoo...!";
-                  if (error) return `Error ${error}`;
-                  return (
-                    <Signup
-                      styles={styles}
-                      handleClick={this.showLogin}
-                      crearUser={crearUser}
-                    />
-                  );
-                }}
-              </Mutation>
+              <Signup styles={styles} handleClick={this.showLogin} />
             )}
             {/* {showPassaword && <LostPassword styles={styles} />} */}
           </Grid.Column>

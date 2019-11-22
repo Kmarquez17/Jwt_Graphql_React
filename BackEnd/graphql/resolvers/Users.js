@@ -1,5 +1,35 @@
 import bcrypt from "bcrypt";
 
+const formatErrors = (error, otherErrors) => {
+  const errors = error.errors;
+  let objErrors = [];
+  if (errors) {
+    Object.entries(errors).map(err => {
+      const { path, message } = err[1];
+      objErrors.push({ path, message });
+    });
+
+    // console.log(objErrors);
+    objErrors = objErrors.concat(otherErrors);
+    return objErrors;
+  } else if (otherErrors.length) {
+    return otherErrors;
+  }
+
+  let uknownError = {};
+  switch (error.code) {
+    case 11000:
+      uknownError.path = "username";
+      uknownError.message = "El nombre del usuario ya existe";
+      break;
+    default:
+      uknownError.path = "Desconocido";
+      uknownError.message = error.message;
+  }
+
+  return [uknownError];
+};
+
 export const UsersResolvers = {
   Query: {
     allUsers: (parent, args, { models }) => {
@@ -11,17 +41,26 @@ export const UsersResolvers = {
   },
   Mutation: {
     crearUser: async (parent, args, { models }) => {
-      console.log(args);
+      const otherErrors = [];
       try {
+        if (args.password.length < 8) {
+          otherErrors.push({
+            path: "password",
+            message: "Password debe ser mayor a 8 caracteres"
+          });
+        }
         const hasPass = await bcrypt.hash(args.password, 10);
-        console.log(hasPass);
         const user = await models.User.create({ ...args, password: hasPass });
 
-        console.log(user)
-
-        return true;
+        return {
+          success: true,
+          errors: []
+        };
       } catch (error) {
-        return false;
+        return {
+          success: false,
+          errors: formatErrors(error, otherErrors)
+        };
       }
     }
   }

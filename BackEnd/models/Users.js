@@ -1,10 +1,31 @@
 import mongoose, { Schema } from "mongoose";
+import validate from "mongoose-validator";
 
 const userSchema = new Schema({
   username: {
     type: String,
     unique: true,
-    required: [true, "El campo es requerido"]
+    required: [true, "El campo es requerido"],
+    validate: [
+      validate({
+        validator: "isLength",
+        arguments: [6, 8],
+        message: "El nombre de usuario debe de contener entre {ARGS[0]} y {ARGS[1]}"
+      }),
+      validate({
+        validator: "isAlphanumeric",
+        message: "El nombre de usuario debe ser alfa numerico"
+      })
+    ]
+  },
+  email: {
+    type: String,
+    validate: [
+      validate({
+        validator: "isEmail",
+        message: "Introduce un email válido"
+      })
+    ]
   },
   password: { type: String },
   fullname: { type: String },
