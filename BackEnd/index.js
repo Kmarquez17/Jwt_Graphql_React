@@ -6,13 +6,15 @@ import models from "./models";
 import initMongo from "./config/db";
 
 const app = express();
+const SECRET = process.env.LLAVE_SECRETA;
 const server = new ApolloServer({
   schema,
   context: {
     models,
+    SECRET,
     user: {
       _id: 1,
-      username: 'Kevin'
+      username: "Kevin"
     }
   }
 });

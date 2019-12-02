@@ -14,7 +14,8 @@ type Error {
 }
 
 type Response {
-  success: Boolean
+  success: Boolean!
+  token: String
   errors: [Error]  
 }
 
@@ -26,6 +27,7 @@ type Query {
 
 
 type Mutation {
+  login(email: String!, password: String!): Response!
   crearUser(username: String!, password: String!, fullname: String!, email:String!): Response!
 }
 `

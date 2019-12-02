@@ -31,6 +31,18 @@ export default {
           }
         }
       }
+    `,
+    login: gql`
+      mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+          success
+          token
+          errors {
+            path
+            message
+          }
+        }
+      }
     `
   }
   // suscription: {

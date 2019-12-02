@@ -46,9 +46,7 @@ class Login extends Component {
     });
   };
 
-  handleLogin = (e, args) => {
-    console.log(args);
-  };
+  
 
   render() {
     // showPassaword
@@ -64,7 +62,6 @@ class Login extends Component {
               <Signin
                 styles={styles}
                 handleClick={this.showRegister}
-                handleSubmit={this.handleLogin}
               />
             )}
             {showRegister && (

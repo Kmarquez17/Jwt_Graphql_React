@@ -67,6 +67,7 @@ class Signup extends Component {
                   <Divider horizontal> O </Divider>
                   <Form.Field>
                     <Form.Input
+                      value={email}
                       placeholder="Email"
                       name="email"
                       onChange={this.handleChange}
@@ -87,6 +88,7 @@ class Signup extends Component {
                   </Form.Field>
                   <Form.Field>
                     <Form.Input
+                      value={fullname}
                       placeholder="Nombre completo"
                       name="fullname"
                       onChange={this.handleChange}
@@ -95,6 +97,7 @@ class Signup extends Component {
                   </Form.Field>
                   <Form.Field>
                     <Form.Input
+                      value={username}
                       placeholder="Nombre de usuario"
                       name="username"
                       onChange={this.handleChange}
@@ -115,6 +118,7 @@ class Signup extends Component {
                   </Form.Field>
                   <Form.Field>
                     <Form.Input
+                      value={password}
                       type="password"
                       placeholder="Password"
                       name="password"
